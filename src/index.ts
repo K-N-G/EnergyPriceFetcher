@@ -2,11 +2,17 @@ import express from 'express';
 import mongoose from 'mongoose';
 import routes from './routes/routes';
 import { startCronJob } from './cron/cron-job';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
-
-mongoose.connect('mongodb://localhost:27017/energy-price-fetcher');
+const PORT = process.env.PORT || 3000;
+const dbHost = process.env.DB_HOST;
+const dbPort = process.env.DB_PORT;
+const dbName = process.env.DB_NAME;
+const connectionString = `mongodb://${dbHost}:${dbPort}/${dbName}`;
+mongoose.connect(connectionString);
 
 app.use(express.json());
 
