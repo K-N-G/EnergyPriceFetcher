@@ -9,6 +9,14 @@ const router = Router();
 
 router.get('/scrape-and-save', totalDeyMarketController.scrapeAndSaveData);
 
+router.get('/', async (req, res) => {
+    try {
+         res.send("Succses");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 router.get('/prices', async (req, res) => {
     try {
