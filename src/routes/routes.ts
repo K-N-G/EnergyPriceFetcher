@@ -49,7 +49,7 @@ router.get('/latest-price', async (req, res) => {
             return res.status(404).json({ error: 'No data found.' });
         }
 
-        res.json(latestPrice);
+        res.json(latestPrice.date);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
