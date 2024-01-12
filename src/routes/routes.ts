@@ -49,7 +49,22 @@ router.get('/latest-price', async (req, res) => {
             return res.status(404).json({ error: 'No data found.' });
         }
 
-        res.json(latestPrice.date);
+        res.json(latestPrice);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.get('/latest-price-date', async (req, res) => {
+    try {
+        const latestPrice = await MarketDataModel.findOne().sort({ _id: -1 });
+
+        if (!latestPrice) {
+            return res.status(404).json({ error: 'No data found.' });
+        }
+
+        res.json({ "latest date": latestPrice.date });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
