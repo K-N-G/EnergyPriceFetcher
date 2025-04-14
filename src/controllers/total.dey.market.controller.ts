@@ -9,13 +9,13 @@ class MarketDataController {
   async scrapeAndSaveData(req: Request, res: Response) {
     const config = {
       headers: {
-        'User-Agent': 'PostmanRuntime/7.32.3'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+        'Accept-Language': 'bg,en;q=0.9'
       }
     };
 
     try {
-      //  'https://ibex.bg/данни-за-пазара/пазарен-сегмент-ден-напред/пазарен-сегмент-ден-напред-2/'
-      const url =  'https://ibex.bg/данни-за-пазара/пазарен-сегмент-ден-напред/day-ahead-prices-and-volumes-v2-0/';
+      const url = 'https://ibex.bg/данни-за-пазара/пазарен-сегмент-ден-напред/day-ahead-prices-and-volumes-v2-0/';
       const response = await axios.get(url, config);
       const $ = cheerio.load(response.data);
 
@@ -75,12 +75,13 @@ class MarketDataController {
   async scrapeAndSaveDataCron() {
     const config = {
       headers: {
-        'User-Agent': 'PostmanRuntime/7.32.3'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+        'Accept-Language': 'bg,en;q=0.9'
       }
     };
 
     try {
-      const url = 'https://ibex.bg/данни-за-пазара/пазарен-сегмент-ден-напред/пазарен-сегмент-ден-напред-2/';
+      const url = 'https://ibex.bg/данни-за-пазара/пазарен-сегмент-ден-напред/day-ahead-prices-and-volumes-v2-0/';
       const response = await axios.get(url, config);
       const $ = cheerio.load(response.data);
 
