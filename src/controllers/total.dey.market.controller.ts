@@ -14,7 +14,8 @@ class MarketDataController {
     };
 
     try {
-      const url = 'https://ibex.bg/данни-за-пазара/пазарен-сегмент-ден-напред/пазарен-сегмент-ден-напред-2/';
+      //  'https://ibex.bg/данни-за-пазара/пазарен-сегмент-ден-напред/пазарен-сегмент-ден-напред-2/'
+      const url =  'https://ibex.bg/данни-за-пазара/пазарен-сегмент-ден-напред/day-ahead-prices-and-volumes-v2-0/';
       const response = await axios.get(url, config);
       const $ = cheerio.load(response.data);
 
